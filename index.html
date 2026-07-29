@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💕 Do you love me, bebe?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce4ec 0%, #f8d0df 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            padding: 0.5rem;
+            touch-action: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            background: rgba(255, 245, 248, 0.85);
+            backdrop-filter: blur(6px);
+            border-radius: 4rem 2rem 4rem 2rem;
+            box-shadow: 0 25px 45px rgba(180, 70, 110, 0.25), 0 0 0 1px rgba(255, 210, 225, 0.6);
+            padding: 2rem 1.5rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            min-height: 400px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #5e1a34;
+            text-shadow: 0 4px 14px rgba(200, 70, 120, 0.2);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        h1 span {
+            background: #ffdae7;
+            padding: 0.1rem 1.4rem;
+            border-radius: 80px;
+            font-size: 2.2rem;
+            line-height: 1.4;
+            box-shadow: inset 0 -3px 0 #d48aa8;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #8d4b66;
+            background: rgba(255, 220, 235, 0.6);
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            margin: 0.2rem 0 1.2rem;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+        }
+
+        .button-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem 3rem;
+            margin: 1.5rem 0 1rem;
+            position: relative;
+            min-height: 120px;
+            padding: 0.5rem 0;
+            width: 100%;
+        }
+
+        .btn {
+            border: none;
+            background: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 100px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            min-width: 120px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #b16a85, 0 12px 28px rgba(150, 60, 90, 0.25);
+            transition: all 0.08s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transform: translateY(0);
+            position: relative;
+            will-change: transform;
+            z-index: 2;
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #a05372, 0 12px 28px rgba(150, 60, 90, 0.3);
+        }
+
+        .btn-yes {
+            background: #d46b8d;
+            color: white;
+            box-shadow: 0 8px 0 #9e4a68, 0 12px 28px rgba(180, 60, 100, 0.4);
+            border-color: #f2b3cc;
+            z-index: 3;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            pointer-events: auto;
+            font-size: 1.8rem;
+            padding: 1rem 2.8rem;
+            min-width: 140px;
+        }
+
+        .btn-yes:hover {
+            background: #de7b9d;
+            transform: scale(1.02);
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        .btn-no {
+            background: #f2f2f2;
+            color: #3d2a33;
+            box-shadow: 0 8px 0 #b0a0a8, 0 12px 28px rgba(80, 50, 60, 0.15);
+            border-color: #e0d6db;
+            transition: left 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+            top 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+            box-shadow 0.2s ease, background 0.2s ease;
+            position: absolute;
+            left: auto;
+            top: auto;
+            transform: translate(0, 0);
+            will-change: left, top;
+            z-index: 2;
+            touch-action: none;
+            flex-shrink: 0;
+            font-size: 1.6rem;
+            padding: 0.9rem 2.2rem;
+            min-width: 120px;
+        }
+
+        .btn-no:hover {
+            background: #fafafa;
+        }
+
+        /* Success message */
+        .success-container {
+            display: none;
+            position: relative;
+            z-index: 5;
+        }
+
+        .success-container.visible {
+            display: block;
+            animation: popSuccess 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
+        }
+
+        @keyframes popSuccess {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .success-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(212, 107, 141, 0.3);
+            animation: rainbowText 3s linear infinite;
+        }
+
+        @keyframes rainbowText {
+            0% {
+                color: #ff6b6b;
+            }
+            16% {
+                color: #ff9f43;
+            }
+            33% {
+                color: #feca57;
+            }
+            50% {
+                color: #48dbfb;
+            }
+            66% {
+                color: #a29bfe;
+            }
+            83% {
+                color: #fd79a8;
+            }
+            100% {
+                color: #ff6b6b;
+            }
+        }
+
+        .success-sub {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            animation: rainbowText 3s linear infinite;
+            animation-delay: 0.5s;
+        }
+
+        .success-love {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: #d46b8d;
+            font-weight: 600;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .heart-rain-container {
+            margin-top: 1rem;
+            font-size: 2rem;
+            animation: floatHearts 2s ease-in-out infinite;
+        }
+
+        @keyframes floatHearts {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Name input modal */
+        .name-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            padding: 1rem;
+        }
+
+        .name-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .name-modal-content {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 3rem 1.5rem 3rem 1.5rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid #fbc1d6;
+        }
+
+        .name-modal-content h2 {
+            color: #5e1a34;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .name-modal-content p {
+            color: #8d4b66;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .name-modal-content input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            border: 2px solid #f5d3e0;
+            border-radius: 60px;
+            outline: none;
+            transition: 0.2s;
+            text-align: center;
+            font-weight: 500;
+            color: #3d2a33;
+            text-transform: capitalize;
+            -webkit-appearance: none;
+        }
+
+        .name-modal-content input:focus {
+            border-color: #d46b8d;
+            box-shadow: 0 0 0 4px rgba(212, 107, 141, 0.15);
+        }
+
+        .name-modal-content .btn-submit {
+            margin-top: 1rem;
+            background: #d46b8d;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 0 #9e4a68;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .name-modal-content .btn-submit:hover {
+            background: #de7b9d;
+            transform: scale(1.02);
+        }
+
+        .name-modal-content .btn-submit:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #9e4a68;
+        }
+
+        .error-message {
+            color: #d46b8d;
+            font-size: 1.1rem;
+            margin-top: 0.8rem;
+            display: none;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-8px);
+            }
+            75% {
+                transform: translateX(8px);
+            }
+        }
+
+        /* Raining hearts - falling from top */
+        .falling-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 1;
+            will-change: transform, opacity;
+            animation: fallDown linear forwards;
+        }
+
+        @keyframes fallDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.5);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(calc(100vh + 100px)) scale(0.8);
+            }
+        }
+
+        /* Rainbow background for success state */
+        .rainbow-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            animation: rainbowBg 5s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rainbowBg {
+            0% {
+                background: radial-gradient(circle at 0% 50%, #ff6b6b 0%, transparent 50%);
+            }
+            20% {
+                background: radial-gradient(circle at 20% 50%, #ff9f43 0%, transparent 50%);
+            }
+            40% {
+                background: radial-gradient(circle at 40% 50%, #feca57 0%, transparent 50%);
+            }
+            60% {
+                background: radial-gradient(circle at 60% 50%, #48dbfb 0%, transparent 50%);
+            }
+            80% {
+                background: radial-gradient(circle at 80% 50%, #a29bfe 0%, transparent 50%);
+            }
+            100% {
+                background: radial-gradient(circle at 100% 50%, #fd79a8 0%, transparent 50%);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .card {
+                padding: 1.5rem 1rem;
+                min-height: 350px;
+                border-radius: 3rem 1.5rem 3rem 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            h1 span {
+                font-size: 1.8rem;
+                padding: 0.1rem 1rem;
+            }
+            .subhead {
+                font-size: 1rem;
+                padding: 0.2rem 1.2rem;
+            }
+            .btn-yes {
+                font-size: 1.5rem;
+                padding: 0.8rem 2rem;
+                min-width: 120px;
+            }
+            .btn-no {
+                font-size: 1.3rem;
+                padding: 0.7rem 1.6rem;
+                min-width: 100px;
+            }
+            .button-panel {
+                gap: 1.5rem;
+                min-height: 100px;
+                margin: 1rem 0 0.5rem;
+            }
+            .success-title {
+                font-size: 2.5rem;
+            }
+            .success-sub {
+                font-size: 1.5rem;
+            }
+            .name-modal-content {
+                padding: 1.5rem 1rem;
+            }
+            .name-modal-content h2 {
+                font-size: 1.5rem;
+            }
+            .success-love {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .btn-yes {
+                font-size: 1.2rem;
+                padding: 0.7rem 1.5rem;
+                min-width: 100px;
+            }
+            .btn-no {
+                font-size: 1.1rem;
+                padding: 0.6rem 1.2rem;
+                min-width: 80px;
+            }
+            .button-panel {
+                gap: 1rem;
+            }
+            .success-title {
+                font-size: 2rem;
+            }
+            .success-sub {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card" id="proposalCard">
+    <div id="mainContent">
+        <h1>
+            <span>💕</span> Do you love me, bebe?
+        </h1>
+        <div class="subhead">✨ be honest, my love ✨</div>
+
+        <div class="button-panel" id="buttonPanel">
+            <button class="btn btn-yes" id="yesBtn">💖 Yes</button>
+            <button class="btn btn-no" id="noBtn">🙅 No</button>
+        </div>
+    </div>
+
+    <!-- Success message -->
+    <div class="success-container" id="successContainer">
+        <div class="success-title">💖 Oliver & Zeny 💖</div>
+        <div class="success-sub">Forever & Always</div>
+        <div class="success-love">Together in Love ❤️</div>
+        <div class="heart-rain-container">
+            <span>💕</span> <span>💗</span> <span>💖</span> <span>💝</span> <span>💘</span>
+            <span>❤️</span> <span>💓</span> <span>💞</span>
+        </div>
+    </div>
+</div>
+
+<!-- Name input modal -->
+<div class="name-modal" id="nameModal">
+    <div class="name-modal-content">
+        <h2>💗 What's your name?</h2>
+        <p>Enter your name to continue</p>
+        <input type="text" id="nameInput" placeholder="Type your name..." maxlength="30" autocomplete="off">
+        <div class="error-message" id="errorMessage">nah its not you</div>
+        <button class="btn-submit" id="submitName">✨ Yes, that's me!</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const panel = document.getElementById('buttonPanel');
+        const nameModal = document.getElementById('nameModal');
+        const nameInput = document.getElementById('nameInput');
+        const submitNameBtn = document.getElementById('submitName');
+        const successContainer = document.getElementById('successContainer');
+        const errorMessage = document.getElementById('errorMessage');
+        const mainContent = document.getElementById('mainContent');
+        const card = document.getElementById('proposalCard');
+
+        let isConfirmed = false;
+        let isNoFloating = false;
+        let rainInterval = null;
+
+        // ---- reset No button to original position ----
+        function resetNoButton() {
+            noBtn.style.left = 'auto';
+            noBtn.style.top = 'auto';
+            noBtn.style.transform = 'translate(0, 0)';
+            noBtn.style.position = 'relative';
+            isNoFloating = false;
+        }
+
+        // ---- Check if two rectangles overlap ----
+        function rectsOverlap(r1, r2) {
+            return !(r1.right < r2.left || r1.left > r2.right ||
+                r1.bottom < r2.top || r1.top > r2.bottom);
+        }
+
+        // ---- Get random position anywhere on screen ----
+        function getRandomScreenPosition() {
+            const noW = noBtn.offsetWidth || 120;
+            const noH = noBtn.offsetHeight || 60;
+            const pad = 10;
+
+            const cardRect = card.getBoundingClientRect();
+
+            const minX = cardRect.left + pad;
+            const maxX = cardRect.right - noW - pad;
+            const minY = cardRect.top + pad;
+            const maxY = cardRect.bottom - noH - pad;
+
+            let targetX, targetY;
+            let attempts = 0;
+            let isOverlapping = true;
+
+            const yesRect = yesBtn.getBoundingClientRect();
+
+            do {
+                targetX = minX + Math.random() * (maxX - minX);
+                targetY = minY + Math.random() * (maxY - minY);
+
+                const btnRect = {
+                    left: targetX,
+                    top: targetY,
+                    right: targetX + noW,
+                    bottom: targetY + noH
+                };
+
+                const yesMargin = 15;
+                const yesRectExpanded = {
+                    left: yesRect.left - yesMargin,
+                    top: yesRect.top - yesMargin,
+                    right: yesRect.right + yesMargin,
+                    bottom: yesRect.bottom + yesMargin
+                };
+
+                isOverlapping = rectsOverlap(btnRect, yesRectExpanded);
+                attempts++;
+            } while (isOverlapping && attempts < 50);
+
+            const panelRect = panel.getBoundingClientRect();
+            const relX = targetX - panelRect.left;
+            const relY = targetY - panelRect.top;
+
+            return { x: relX, y: relY };
+        }
+
+        // ---- move No button randomly anywhere on screen ----
+        function floatNoRandomly(clientX, clientY) {
+            if (isConfirmed) return;
+
+            if (!isNoFloating) {
+                const noRect = noBtn.getBoundingClientRect();
+                const panelRect = panel.getBoundingClientRect();
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = (noRect.left - panelRect.left) + 'px';
+                noBtn.style.top = (noRect.top - panelRect.top) + 'px';
+                noBtn.style.transform = 'translate(0, 0)';
+                isNoFloating = true;
+            }
+
+            const pos = getRandomScreenPosition();
+
+            noBtn.style.left = pos.x + 'px';
+            noBtn.style.top = pos.y + 'px';
+            noBtn.style.transform = 'translate(0, 0)';
+        }
+
+        // ---- handle pointer/touch move ----
+        function onPointerMove(e) {
+            if (isConfirmed) return;
+
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (clientX === undefined) return;
+
+            const noRect = noBtn.getBoundingClientRect();
+            const centerX = noRect.left + noRect.width / 2;
+            const centerY = noRect.top + noRect.height / 2;
+            const dist = Math.hypot(clientX - centerX, clientY - centerY);
+
+            if (dist < 200) {
+                floatNoRandomly(clientX, clientY);
+            }
+        }
+
+        // ---- handle No button click/tap ----
+        function onNoInteraction(e) {
+            if (isConfirmed) return;
+            e.preventDefault();
+            e.stopPropagation();
+
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (clientX !== undefined) {
+                floatNoRandomly(clientX, clientY);
+            }
+        }
+
+        // ---- show name modal ----
+        function showNameModal() {
+            nameModal.classList.add('active');
+            nameInput.value = '';
+            errorMessage.classList.remove('show');
+            nameInput.style.borderColor = '#f5d3e0';
+            nameInput.placeholder = 'Type your name...';
+            setTimeout(() => nameInput.focus(), 100);
+        }
+
+        // ---- handle Yes click ----
+        function handleYes() {
+            if (!isConfirmed) {
+                showNameModal();
+            }
+        }
+
+        // ---- start raining hearts from top ----
+        function startHeartRain() {
+            const emojis = ['💕', '💗', '💖', '💝', '💘', '❤️', '💓', '💞', '♥️', '💟'];
+
+            if (rainInterval) {
+                clearInterval(rainInterval);
+            }
+
+            // Initial burst
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createFallingHeart(emojis), i * 50);
+            }
+
+            // Continuous rain
+            rainInterval = setInterval(() => {
+                const count = 2 + Math.floor(Math.random() * 5);
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => createFallingHeart(emojis), i * 40);
+                }
+            }, 60);
+        }
+
+        function createFallingHeart(emojis) {
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+            const size = 20 + Math.random() * 45;
+            heart.style.fontSize = size + 'px';
+
+            // Random horizontal position
+            heart.style.left = Math.random() * 100 + '%';
+
+            // Random animation duration (2-5 seconds)
+            const duration = 2.5 + Math.random() * 3;
+            heart.style.animationDuration = duration + 's';
+
+            // Random delay for staggered effect
+            heart.style.animationDelay = (Math.random() * 0.5) + 's';
+
+            // Random colors for hearts
+            const colors = ['#ff6b6b', '#ff9f43', '#feca57', '#48dbfb', '#a29bfe', '#fd79a8', '#ff7675', '#74b9ff', '#e17055',
+                '#00b894'
+            ];
+            if (Math.random() < 0.5) {
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            // Random opacity
+            heart.style.opacity = 0.7 + Math.random() * 0.3;
+
+            // Random sway - add slight horizontal movement
+            const sway = (Math.random() - 0.5) * 60;
+            heart.style.setProperty('--sway', sway + 'px');
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + 0.5) * 1000);
+        }
+
+        // ---- submit name ----
+        function submitName() {
+            const name = nameInput.value.trim();
+
+            const expectedName = "Zeny Dear Feronel";
+            if (name.toLowerCase() !== expectedName.toLowerCase()) {
+                errorMessage.classList.add('show');
+                nameInput.style.borderColor = '#d46b8d';
+                nameInput.value = '';
+                nameInput.placeholder = 'Try again...';
+                nameInput.focus();
+                nameInput.style.animation = 'shake 0.3s ease';
+                setTimeout(() => {
+                    nameInput.style.animation = '';
+                }, 300);
+                return;
+            }
+
+            errorMessage.classList.remove('show');
+            nameModal.classList.remove('active');
+            isConfirmed = true;
+
+            // Remove main content
+            mainContent.style.display = 'none';
+
+            // Show success message with rainbow effect
+            successContainer.classList.add('visible');
+
+            // Add rainbow background
+            const rainbowBg = document.createElement('div');
+            rainbowBg.className = 'rainbow-bg';
+            document.body.appendChild(rainbowBg);
+
+            // Start heart rain
+            startHeartRain();
+
+            // Make card more transparent to see rainbow
+            card.style.background = 'rgba(255, 245, 248, 0.4)';
+            card.style.backdropFilter = 'blur(10px)';
+        }
+
+        // ---- init ----
+        function init() {
+            resetNoButton();
+            panel.style.position = 'relative';
+
+            // Events
+            panel.addEventListener('pointermove', onPointerMove);
+            panel.addEventListener('touchmove', onPointerMove, { passive: true });
+
+            noBtn.addEventListener('pointerenter', onNoInteraction);
+            noBtn.addEventListener('touchstart', onNoInteraction, { passive: false });
+            noBtn.addEventListener('click', onNoInteraction);
+
+            yesBtn.addEventListener('click', handleYes);
+
+            submitNameBtn.addEventListener('click', submitName);
+            nameInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    submitName();
+                }
+            });
+
+            nameModal.addEventListener('click', function(e) {
+                if (e.target === nameModal) {
+                    nameModal.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (isNoFloating && !isConfirmed) {
+                    // Reposition if needed
+                }
+            });
+        }
+
+        init();
+        console.log('💕 Do you love me, bebe?');
+    })();
+</script>
+</body>
+</html>
