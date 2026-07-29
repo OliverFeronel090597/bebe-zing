@@ -33,17 +33,17 @@
             border-radius: 4rem 2rem 4rem 2rem;
             box-shadow: 0 25px 45px rgba(180, 70, 110, 0.25), 0 0 0 1px rgba(255, 210, 225, 0.6);
             padding: 2rem 1.5rem;
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
             transition: 0.3s;
             position: relative;
-            min-height: 400px;
+            min-height: 450px;
             z-index: 2;
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 600;
             letter-spacing: 1px;
             color: #5e1a34;
@@ -58,21 +58,21 @@
 
         h1 span {
             background: #ffdae7;
-            padding: 0.1rem 1.4rem;
+            padding: 0.1rem 1rem;
             border-radius: 80px;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             line-height: 1.4;
             box-shadow: inset 0 -3px 0 #d48aa8;
         }
 
         .subhead {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #8d4b66;
             background: rgba(255, 220, 235, 0.6);
             display: inline-block;
-            padding: 0.3rem 1.8rem;
+            padding: 0.2rem 1.4rem;
             border-radius: 60px;
-            margin: 0.2rem 0 1.2rem;
+            margin: 0.2rem 0 1rem;
             font-weight: 500;
             backdrop-filter: blur(2px);
         }
@@ -82,10 +82,10 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 2rem 3rem;
-            margin: 1.5rem 0 1rem;
+            gap: 1.5rem 2.5rem;
+            margin: 1.2rem 0 0.8rem;
             position: relative;
-            min-height: 120px;
+            min-height: 100px;
             padding: 0.5rem 0;
             width: 100%;
         }
@@ -93,11 +93,11 @@
         .btn {
             border: none;
             background: white;
-            padding: 0.9rem 2.2rem;
+            padding: 0.7rem 1.8rem;
             border-radius: 100px;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            min-width: 120px;
+            min-width: 100px;
             cursor: pointer;
             box-shadow: 0 8px 0 #b16a85, 0 12px 28px rgba(150, 60, 90, 0.25);
             transition: all 0.08s ease;
@@ -129,9 +129,9 @@
             flex-shrink: 0;
             transition: all 0.2s ease;
             pointer-events: auto;
-            font-size: 1.8rem;
-            padding: 1rem 2.8rem;
-            min-width: 140px;
+            font-size: 1.4rem;
+            padding: 0.8rem 2rem;
+            min-width: 120px;
         }
 
         .btn-yes:hover {
@@ -159,26 +159,27 @@
             z-index: 2;
             touch-action: none;
             flex-shrink: 0;
-            font-size: 1.6rem;
-            padding: 0.9rem 2.2rem;
-            min-width: 120px;
+            font-size: 1.3rem;
+            padding: 0.7rem 1.8rem;
+            min-width: 100px;
         }
 
         .btn-no:hover {
             background: #fafafa;
         }
 
-        /* Success message */
+        /* Success message - LARGER CONTAINER */
         .success-container {
             display: none;
             position: relative;
             z-index: 5;
             border-radius: 3rem 1.5rem 3rem 1.5rem;
             overflow: hidden;
-            padding: 2rem 1.5rem;
-            min-height: 300px;
+            padding: 2.5rem 2rem;
+            min-height: 380px;
             background: rgba(255, 245, 248, 0.3);
             backdrop-filter: blur(2px);
+            margin: 0.5rem 0;
         }
 
         .success-container.visible {
@@ -205,6 +206,11 @@
         .success-content {
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 280px;
         }
 
         @keyframes popSuccess {
@@ -222,13 +228,14 @@
         }
 
         .success-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
             text-shadow: 0 0 20px rgba(212, 107, 141, 0.3);
             animation: rainbowText 3s linear infinite;
             position: relative;
             z-index: 1;
+            line-height: 1.3;
         }
 
         @keyframes rainbowText {
@@ -258,15 +265,16 @@
         .success-sub {
             font-size: 2rem;
             font-weight: 700;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
             animation: rainbowText 3s linear infinite;
             animation-delay: 0.5s;
             position: relative;
             z-index: 1;
+            line-height: 1.3;
         }
 
         .success-love {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-top: 1rem;
             color: #d46b8d;
             font-weight: 600;
@@ -301,7 +309,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-12px);
             }
         }
 
@@ -350,20 +358,20 @@
 
         .name-modal-content h2 {
             color: #5e1a34;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.3rem;
         }
 
         .name-modal-content p {
             color: #8d4b66;
-            font-size: 1rem;
-            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         .name-modal-content input {
             width: 100%;
-            padding: 0.8rem 1.2rem;
-            font-size: 1rem;
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
             border: 2px solid #f5d3e0;
             border-radius: 60px;
             outline: none;
@@ -381,13 +389,13 @@
         }
 
         .name-modal-content .btn-submit {
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             background: #d46b8d;
             color: white;
             border: none;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 60px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
@@ -408,8 +416,8 @@
 
         .error-message {
             color: #d46b8d;
-            font-size: 1.1rem;
-            margin-top: 0.8rem;
+            font-size: 1rem;
+            margin-top: 0.6rem;
             display: none;
             font-weight: 600;
         }
@@ -435,12 +443,18 @@
         /* Raining hearts - falling from top */
         .falling-heart {
             position: fixed;
-            pointer-events: none;
+            pointer-events: auto;
+            cursor: pointer;
             z-index: 9999;
             opacity: 0;
             will-change: transform, opacity;
             animation: fallDown linear forwards;
             top: -50px;
+            transition: transform 0.1s;
+        }
+
+        .falling-heart:hover {
+            transform: scale(1.2);
         }
 
         @keyframes fallDown {
@@ -458,6 +472,25 @@
             100% {
                 opacity: 0;
                 transform: translateY(calc(100vh + 200px)) scale(0.5);
+            }
+        }
+
+        /* Burst particles */
+        .burst-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            animation: burstOut 0.8s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0) rotate(360deg);
             }
         }
 
@@ -497,67 +530,24 @@
 
         @media (max-width: 550px) {
             .card {
-                padding: 1.5rem 1rem;
+                padding: 1.2rem 0.8rem;
                 min-height: 350px;
-                border-radius: 3rem 1.5rem 3rem 1.5rem;
+                border-radius: 2.5rem 1.2rem 2.5rem 1.2rem;
             }
             h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             h1 span {
-                font-size: 1.8rem;
-                padding: 0.1rem 1rem;
+                font-size: 1.5rem;
+                padding: 0.1rem 0.8rem;
             }
             .subhead {
-                font-size: 1rem;
-                padding: 0.2rem 1.2rem;
-            }
-            .btn-yes {
-                font-size: 1.5rem;
-                padding: 0.8rem 2rem;
-                min-width: 120px;
-            }
-            .btn-no {
-                font-size: 1.3rem;
-                padding: 0.7rem 1.6rem;
-                min-width: 100px;
-            }
-            .button-panel {
-                gap: 1.5rem;
-                min-height: 100px;
-                margin: 1rem 0 0.5rem;
-            }
-            .success-title {
-                font-size: 2.5rem;
-            }
-            .success-sub {
-                font-size: 1.5rem;
-            }
-            .name-modal-content {
-                padding: 1.5rem 1rem;
-            }
-            .name-modal-content h2 {
-                font-size: 1.5rem;
-            }
-            .success-love {
-                font-size: 1.1rem;
-            }
-            .success-container {
-                padding: 1.5rem 1rem;
-                min-height: 250px;
-            }
-            .success-bg {
-                border-radius: 3rem 1.5rem 3rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 1.8rem;
+                font-size: 0.9rem;
+                padding: 0.2rem 1rem;
             }
             .btn-yes {
                 font-size: 1.2rem;
-                padding: 0.7rem 1.5rem;
+                padding: 0.6rem 1.5rem;
                 min-width: 100px;
             }
             .btn-no {
@@ -566,13 +556,72 @@
                 min-width: 80px;
             }
             .button-panel {
-                gap: 1rem;
+                gap: 1.2rem;
+                min-height: 80px;
+                margin: 0.8rem 0 0.5rem;
             }
             .success-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            .success-sub {
+                font-size: 1.5rem;
+            }
+            .name-modal-content {
+                padding: 1.2rem 1rem;
+            }
+            .name-modal-content h2 {
+                font-size: 1.3rem;
+            }
+            .success-love {
+                font-size: 1.1rem;
+            }
+            .success-container {
+                padding: 1.8rem 1.2rem;
+                min-height: 300px;
+            }
+            .success-bg {
+                border-radius: 2.5rem 1.2rem 2.5rem 1.2rem;
+            }
+            .heart-rain-container {
+                font-size: 1.5rem;
+            }
+            .success-content {
+                min-height: 220px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .btn-yes {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+                min-width: 80px;
+            }
+            .btn-no {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+                min-width: 70px;
+            }
+            .button-panel {
+                gap: 0.8rem;
+            }
+            .success-title {
+                font-size: 1.8rem;
             }
             .success-sub {
                 font-size: 1.2rem;
+            }
+            .success-love {
+                font-size: 1rem;
+            }
+            .success-container {
+                padding: 1.5rem 1rem;
+                min-height: 260px;
+            }
+            .success-content {
+                min-height: 200px;
             }
         }
     </style>
@@ -591,7 +640,7 @@
         </div>
     </div>
 
-    <!-- Success message -->
+    <!-- Success message - LARGER -->
     <div class="success-container" id="successContainer">
         <div class="success-bg" id="successBg"></div>
         <div class="success-content">
@@ -768,26 +817,75 @@
             }
         }
 
+        // ---- burst effect on heart click ----
+        function createBurst(x, y, emoji) {
+            const particleCount = 20 + Math.floor(Math.random() * 15);
+            const emojis = ['💕', '💗', '💖', '💝', '💘', '❤️', '💓', '💞', '♥️', '💟'];
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'burst-particle';
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+                const size = 8 + Math.random() * 18;
+                particle.style.fontSize = size + 'px';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = 50 + Math.random() * 150;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance - 50;
+
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+
+                const duration = 0.6 + Math.random() * 0.6;
+                particle.style.animationDuration = duration + 's';
+
+                const colors = ['#ff6b6b', '#ff9f43', '#feca57', '#48dbfb', '#a29bfe', '#fd79a8', '#ff7675', '#74b9ff'];
+                if (Math.random() < 0.5) {
+                    particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000 + 100);
+            }
+        }
+
+        // ---- handle heart click ----
+        function handleHeartClick(e) {
+            const heart = e.currentTarget;
+            const rect = heart.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            const emoji = heart.textContent;
+
+            heart.remove();
+            createBurst(x, y, emoji);
+        }
+
         // ---- start raining hearts from top ----
         function startHeartRain() {
-            const emojis = ['💕', '💗', '💖', '💝', '💘', '❤️', '💓', '💞', '♥️'];
+            const emojis = ['💕', '💗', '💖', '💝', '💘', '❤️', '💓', '💞', '♥️', '💟'];
 
             if (rainInterval) {
                 clearInterval(rainInterval);
             }
 
-            // Initial burst - spread across top
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => createFallingHeart(emojis), i * 60);
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createFallingHeart(emojis), i * 80);
             }
 
-            // Continuous rain - fewer hearts
             rainInterval = setInterval(() => {
                 const count = 1 + Math.floor(Math.random() * 2);
                 for (let i = 0; i < count; i++) {
                     setTimeout(() => createFallingHeart(emojis), i * 50);
                 }
-            }, 150);
+            }, 200);
         }
 
         function createFallingHeart(emojis) {
@@ -795,23 +893,16 @@
             heart.className = 'falling-heart';
             heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
-            const size = 25 + Math.random() * 40;
+            const size = 20 + Math.random() * 35;
             heart.style.fontSize = size + 'px';
 
-            // Random horizontal position - spread across screen width
             heart.style.left = Math.random() * 100 + '%';
-
-            // Set initial position at top
             heart.style.top = '-30px';
 
-            // Random animation duration (3-6 seconds)
             const duration = 3.5 + Math.random() * 3;
             heart.style.animationDuration = duration + 's';
-
-            // Random delay for staggered effect
             heart.style.animationDelay = (Math.random() * 0.3) + 's';
 
-            // Random colors for hearts
             const colors = ['#ff6b6b', '#ff9f43', '#feca57', '#48dbfb', '#a29bfe', '#fd79a8', '#ff7675', '#74b9ff', '#e17055',
                 '#00b894'
             ];
@@ -819,13 +910,20 @@
                 heart.style.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
-            // Random opacity
             heart.style.opacity = 0.8 + Math.random() * 0.2;
+
+            heart.addEventListener('click', handleHeartClick);
+            heart.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                handleHeartClick(e);
+            });
 
             document.body.appendChild(heart);
 
             setTimeout(() => {
-                heart.remove();
+                if (heart.parentNode) {
+                    heart.remove();
+                }
             }, (duration + 0.5) * 1000);
         }
 
@@ -851,27 +949,20 @@
             nameModal.classList.remove('active');
             isConfirmed = true;
 
-            // Remove main content
             mainContent.style.display = 'none';
-
-            // Show success message with background image
             successContainer.classList.add('visible');
 
-            // Set background image with low opacity - aligned to top
             successBg.style.backgroundImage = "url('meandher.jpg')";
             successBg.style.backgroundPosition = "top center";
             successBg.style.backgroundSize = "cover";
             successBg.style.opacity = "0.2";
 
-            // Add rainbow background
             const rainbowBg = document.createElement('div');
             rainbowBg.className = 'rainbow-bg';
             document.body.appendChild(rainbowBg);
 
-            // Start heart rain
             startHeartRain();
 
-            // Make card more transparent to see rainbow
             card.style.background = 'rgba(255, 245, 248, 0.4)';
             card.style.backdropFilter = 'blur(10px)';
         }
@@ -881,7 +972,6 @@
             resetNoButton();
             panel.style.position = 'relative';
 
-            // Events
             panel.addEventListener('pointermove', onPointerMove);
             panel.addEventListener('touchmove', onPointerMove, { passive: true });
 
@@ -901,12 +991,6 @@
             nameModal.addEventListener('click', function(e) {
                 if (e.target === nameModal) {
                     nameModal.classList.remove('active');
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                if (isNoFloating && !isConfirmed) {
-                    // Reposition if needed
                 }
             });
         }
